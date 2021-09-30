@@ -3277,6 +3277,201 @@ function togglenoclip()
     end
 end
 
+function hover()
+loadstring(game:GetObjects('rbxassetid://7339698872')[1].Source)()
+end
+
+function book()
+--[[ In order to use this script you need to be wearing
+the ready player two book join this game to obtain it!
+https://www.roblox.com/games/5967514178/Ready-Player-Two-Hub
+]]--
+for i,v in next, game:GetService("Players").LocalPlayer.Character:GetDescendants() do
+if v:IsA("BasePart") and v.Name ~="HumanoidRootPart" then 
+game:GetService("RunService").Heartbeat:connect(function()
+v.Velocity = Vector3.new(0,-30,0)
+wait(0.5)
+end)
+end
+end
+
+local LocalPlayer = game.Players.LocalPlayer
+
+function Create(HatName, position, rotation, part)
+Instance.new("Attachment",game:GetService("Workspace")[LocalPlayer.Name][HatName].Handle)
+Instance.new("AlignPosition",game:GetService("Workspace")[LocalPlayer.Name][HatName].Handle)
+Instance.new("AlignOrientation", game:GetService("Workspace")[LocalPlayer.Name][HatName].Handle)
+Instance.new("Attachment",game:GetService("Workspace")[LocalPlayer.Name][part])
+workspace[LocalPlayer.Name][part].Attachment.Name = HatName
+game:GetService("Workspace")[LocalPlayer.Name][HatName].Handle.AccessoryWeld:Destroy()
+game:GetService("Workspace")[LocalPlayer.Name][HatName].Handle.AlignPosition.Attachment0 = game:GetService("Workspace")[LocalPlayer.Name][HatName].Handle.Attachment
+game:GetService("Workspace")[LocalPlayer.Name][HatName].Handle.AlignOrientation.Attachment0 = game:GetService("Workspace")[LocalPlayer.Name][HatName].Handle.Attachment
+game:GetService("Workspace")[LocalPlayer.Name][HatName].Handle.AlignPosition.Attachment1 = game:GetService("Workspace")[LocalPlayer.Name][part][HatName]
+game:GetService("Workspace")[LocalPlayer.Name][HatName].Handle.AlignOrientation.Attachment1 = game:GetService("Workspace")[LocalPlayer.Name][part][HatName]
+game:GetService("Workspace")[LocalPlayer.Name][part][HatName].Position = position
+game:GetService("Workspace")[LocalPlayer.Name][HatName].Handle.Attachment.Rotation = rotation
+game:GetService("Workspace")[LocalPlayer.Name][HatName].Handle.AlignPosition.Responsiveness = 200
+game:GetService("Workspace")[LocalPlayer.Name][HatName].Handle.AlignOrientation.Responsiveness = 200
+game:GetService("Workspace")[LocalPlayer.Name][HatName].Handle.AlignPosition.RigidityEnabled = true
+game:GetService("Workspace")[LocalPlayer.Name][HatName].Handle.AlignOrientation.RigidityEnabled = true
+end
+
+function Edit(HatName, position, rotation, part)
+    game:GetService("Workspace")[LocalPlayer.Name][HatName].Handle.Attachment.Rotation = rotation
+    game:GetService("Workspace")[LocalPlayer.Name][part][HatName].Position = position
+end
+
+function rmesh(HatName)
+for _,mesh in next, workspace[LocalPlayer.Name][HatName]:GetDescendants() do
+if mesh:IsA("Mesh") or mesh:IsA("SpecialMesh") then
+mesh:Remove()
+end
+end
+end
+
+Create('AFunRead',Vector3.new(0,-0.7,-1.08),Vector3.new(180,0,-50),'Right Arm')
+
+
+
+
+
+
+
+
+
+loadstring(game:HttpGet(('https://raw.githubusercontent.com/XeneonPlays/Reanimate/main/Reanimate'),true))()
+
+local Player=game.Players.LocalPlayer local Character=workspace[Player.Name]['Dummy'] local hum = Character.Humanoid local LeftArm=Character["Left Arm"] local LeftLeg=Character["Left Leg"] local RightArm=Character["Right Arm"] local RightLeg=Character["Right Leg"] local Root=Character["HumanoidRootPart"] local Head=Character["Head"] local Torso=Character["Torso"] local Neck=Torso["Neck"] local mouse = Player:GetMouse() local position = nil local sine = 0 local t = 0 local change = 1
+
+local HEADLERP = Instance.new("ManualWeld")
+HEADLERP.Parent = Head
+HEADLERP.Part0 = Head
+HEADLERP.Part1 = Head
+HEADLERP.C0 = CFrame.new(0, -1.5, -0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0))
+ 
+local TORSOLERP = Instance.new("ManualWeld")
+TORSOLERP.Parent = Root
+TORSOLERP.Part0 = Torso
+TORSOLERP.C0 = CFrame.new(0, 0, 0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0))
+ 
+local ROOTLERP = Instance.new("ManualWeld")
+ROOTLERP.Parent = Root
+ROOTLERP.Part0 = Root
+ROOTLERP.Part1 = Torso
+ROOTLERP.C0 = CFrame.new(0, 0, 0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0))
+ 
+local RIGHTARMLERP = Instance.new("ManualWeld")
+RIGHTARMLERP.Parent = RightArm
+RIGHTARMLERP.Part0 = RightArm
+RIGHTARMLERP.Part1 = Torso
+RIGHTARMLERP.C0 = CFrame.new(-1.5, 0, -0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0))
+ 
+local LEFTARMLERP = Instance.new("ManualWeld")
+LEFTARMLERP.Parent = LeftArm
+LEFTARMLERP.Part0 = LeftArm
+LEFTARMLERP.Part1 = Torso
+LEFTARMLERP.C0 = CFrame.new(1.5, 0, -0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0))
+ 
+local RIGHTLEGLERP = Instance.new("ManualWeld")
+RIGHTLEGLERP.Parent = RightLeg
+RIGHTLEGLERP.Part0 = RightLeg
+RIGHTLEGLERP.Part1 = Torso
+RIGHTLEGLERP.C0 = CFrame.new(-0.5, 2, 0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0))
+ 
+local LEFTLEGLERP = Instance.new("ManualWeld")
+LEFTLEGLERP.Parent = LeftLeg
+LEFTLEGLERP.Part0 = LeftLeg
+LEFTLEGLERP.Part1 = Torso
+LEFTLEGLERP.C0 = CFrame.new(0.5, 2, 0) * CFrame.Angles(math.rad(0), math.rad(0), math.rad(0))
+
+function swait(num)
+    if num == 0 or num == nil then
+        game:service("RunService").Stepped:wait(0)
+    else
+        for i = 0, num do
+            game:service("RunService").Stepped:wait(0)
+        end
+    end
+end
+
+m = game.Players.LocalPlayer:GetMouse()
+
+m.KeyDown:connect(function(k)
+if k == "0" then
+Character.Humanoid.WalkSpeed = 25
+end
+end)
+
+m.KeyUp:connect(function(k)
+if k == "0" then
+Character.Humanoid.WalkSpeed = 16
+end
+end)
+
+
+coroutine.wrap(function() -------Checks
+while true do
+if Root.Velocity.y > 1 then
+position = "jump"
+elseif Root.Velocity.y < -1 then
+position = "fall"
+elseif Root.Velocity.Magnitude < 2 then
+position = "idle"
+elseif Root.Velocity.Magnitude < 20 then
+position = "walk"
+elseif Root.Velocity.Magnitude > 20 then
+position = "run"
+else
+end
+wait()
+end
+end)()
+
+coroutine.wrap(function()
+while true do
+sine = sine + change
+if position == "idle" then
+change = 0.6
+ROOTLERP.C0 = ROOTLERP.C0:lerp(CFrame.new(0 + 0 * math.sin(sine/12), 0 + 0.1 * math.sin(sine/12), 0 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(-6.51 + 10 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+RIGHTARMLERP.C0 = RIGHTARMLERP.C0:lerp(CFrame.new(-1.5 + 0 * math.sin(sine/12), 0.7 + 0 * math.sin(sine/12), 0.1 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(-101.93 + 0 * math.sin(sine/12)), math.rad(-32.53 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+LEFTARMLERP.C0 = LEFTARMLERP.C0:lerp(CFrame.new(1.08 + 0 * math.sin(sine/12), -0.2 + 0 * math.sin(sine/12), 0 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(-84.58 + 0 * math.sin(sine/12)), math.rad(78.07 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+RIGHTLEGLERP.C0 = RIGHTLEGLERP.C0:lerp(CFrame.new(-0.5 + 0 * math.sin(sine/12), 2 + 0 * math.sin(sine/12), 0.3 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(0 + 10 * math.sin(sine/12)), math.rad(15.18 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+LEFTLEGLERP.C0 = LEFTLEGLERP.C0:lerp(CFrame.new(0.5 + 0 * math.sin(sine/12), 2 + 0 * math.sin(sine/12), 0.3 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(0 + 10 * math.sin(sine/12)), math.rad(-10.84 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+elseif position == "walk" then
+change = 0.6
+ROOTLERP.C0 = ROOTLERP.C0:lerp(CFrame.new(0 + 0 * math.sin(sine/12), 0 + 0.1 * math.sin(sine/12), 0 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(-15.18 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+RIGHTARMLERP.C0 = RIGHTARMLERP.C0:lerp(CFrame.new(-1.5 + 0 * math.sin(sine/12), 0.7 + 0 * math.sin(sine/12), 0.6 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(-180 + 0 * math.sin(sine/12)), math.rad(-32.53 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+LEFTARMLERP.C0 = LEFTARMLERP.C0:lerp(CFrame.new(1.08 + 0 * math.sin(sine/12), -0.2 + 0 * math.sin(sine/12), 0 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(-84.58 + 0 * math.sin(sine/12)), math.rad(78.07 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+RIGHTLEGLERP.C0 = RIGHTLEGLERP.C0:lerp(CFrame.new(-0.5 + 0 * math.sin(sine/12), 2 + 0 * math.sin(sine/12), 0.3 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(0 + 40 * math.sin(sine/12)), math.rad(15.18 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+LEFTLEGLERP.C0 = LEFTLEGLERP.C0:lerp(CFrame.new(0.5 + 0 * math.sin(sine/12), 2 + 0 * math.sin(sine/12), 0.3 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(0 + -40 * math.sin(sine/12)), math.rad(-10.84 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+elseif position == "run" then
+change = 3
+change = 3
+ROOTLERP.C0 = ROOTLERP.C0:lerp(CFrame.new(0 + 0 * math.sin(sine/12), 0 + -0.3 * math.sin(sine/12), 0 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(20 + -20 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+RIGHTARMLERP.C0 = RIGHTARMLERP.C0:lerp(CFrame.new(-1.5 + 0 * math.sin(sine/12), 1 + 0 * math.sin(sine/12), 0 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(150 + 50 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+LEFTARMLERP.C0 = LEFTARMLERP.C0:lerp(CFrame.new(1.5 + 0 * math.sin(sine/12), 1 + 0 * math.sin(sine/12), 0 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(150 + 50 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+RIGHTLEGLERP.C0 = RIGHTLEGLERP.C0:lerp(CFrame.new(-0.5 + 0 * math.sin(sine/12), 2 + -0.5 * math.sin(sine/12), 0.5 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(20 + -80 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+LEFTLEGLERP.C0 = LEFTLEGLERP.C0:lerp(CFrame.new(0.5 + 0 * math.sin(sine/12), 2 + -0.5 * math.sin(sine/12), 0.5 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(20 + 80 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+elseif position == "jump" then
+change = 1
+ROOTLERP.C0 = ROOTLERP.C0:lerp(CFrame.new(0 + 0 * math.sin(sine/12), 0 + 0 * math.sin(sine/12), 0 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(-1.5 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+RIGHTARMLERP.C0 = RIGHTARMLERP.C0:lerp(CFrame.new(-1.5 + 0 * math.sin(sine/12), 0.6 + 0 * math.sin(sine/12), 0.4 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(-145.3 + 0 * math.sin(sine/12)), math.rad(-41.2 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+LEFTARMLERP.C0 = LEFTARMLERP.C0:lerp(CFrame.new(1 + 0 * math.sin(sine/12), -0.1 + 0 * math.sin(sine/12), 0 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(-97.59 + 0 * math.sin(sine/12)), math.rad(71.57 + 0 * math.sin(sine/12)), math.rad(10.84 + 0 * math.sin(sine/12))),0.1)
+RIGHTLEGLERP.C0 = RIGHTLEGLERP.C0:lerp(CFrame.new(-0.5 + 0 * math.sin(sine/12), 2 + 0 * math.sin(sine/12), 0 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(8.67 + 0.1 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+LEFTLEGLERP.C0 = LEFTLEGLERP.C0:lerp(CFrame.new(0.5 + 0 * math.sin(sine/12), 1.4 + 0 * math.sin(sine/12), 0.4 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(8.67 + 0.1 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+elseif position == "fall" then
+change = 1
+ROOTLERP.C0 = ROOTLERP.C0:lerp(CFrame.new(0 + 0 * math.sin(sine/12), 0 + 0 * math.sin(sine/12), 0 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(-1.5 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+RIGHTARMLERP.C0 = RIGHTARMLERP.C0:lerp(CFrame.new(-1.5 + 0 * math.sin(sine/12), 0.6 + 0 * math.sin(sine/12), 0.4 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(-145.3 + 0 * math.sin(sine/12)), math.rad(-41.2 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+LEFTARMLERP.C0 = LEFTARMLERP.C0:lerp(CFrame.new(1 + 0 * math.sin(sine/12), -0.1 + 0 * math.sin(sine/12), 0 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(-97.59 + 0 * math.sin(sine/12)), math.rad(71.57 + 0 * math.sin(sine/12)), math.rad(10.84 + 0 * math.sin(sine/12))),0.1)
+RIGHTLEGLERP.C0 = RIGHTLEGLERP.C0:lerp(CFrame.new(-0.5 + 0 * math.sin(sine/12), 2 + 0 * math.sin(sine/12), 0 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(8.67 + 0.1 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+LEFTLEGLERP.C0 = LEFTLEGLERP.C0:lerp(CFrame.new(0.5 + 0 * math.sin(sine/12), 1.4 + 0 * math.sin(sine/12), 0.4 + 0 * math.sin(sine/12)) * CFrame.Angles(math.rad(8.67 + 0.1 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12)), math.rad(0 + 0 * math.sin(sine/12))),0.1)
+end
+swait()
+end
+end)()
+    end
+
 function wall() 
 loadstring(game:HttpGet("https://raw.githubusercontent.com/valssss/gjk/main/fsgfse", true))()
 end
@@ -4453,6 +4648,8 @@ pez:addButton("movement","Fly",togglefly)
 pez:addButton("movement","Fast",togglefast)
 pez:addButton("movement","Highjump",togglejump)
 pez:addButton("movement","WalkOnWalls (reset to remove)",wall)
+pez:addButton("movement","Spawn HoverBoard (reset to remove)",hover)
+pez:addButton("movement","Read a Book (reset to remove)",book)
 
 pez:addTab("character","Character");
 pez:addButton("character","Force Reset",reset)
